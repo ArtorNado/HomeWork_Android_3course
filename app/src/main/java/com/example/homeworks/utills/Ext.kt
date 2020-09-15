@@ -2,11 +2,11 @@ package com.example.homeworks.utills
 
 import java.lang.StringBuilder
 
-// Not my code. I converted the code to Kotlin and converted to ext
-
 fun String.append(text: String): String {
     return StringBuilder().append(this).append(text).toString()
 }
+
+// Not my code. I converted the code to Kotlin and converted to ext
 
 fun String.eval(): Double {
 
