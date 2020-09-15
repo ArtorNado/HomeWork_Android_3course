@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'io.gitlab.arturbosch.detekt'
+apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
     compileSdkVersion 30
@@ -28,7 +28,7 @@ android {
 detekt {
     failFast = true // fail build on any finding
     buildUponDefaultConfig = true // preconfigure defaults
-    config = files("$rootDir/config/detekt/detekt.yml")
+    config = files("..//config/detekt/detekt.yml")
     // point to your custom config defining rules to run, overwriting default behavior
 // baseline = file("$projectDir/config/baseline.xml") // a way of suppressing issues before introducing detekt
 
