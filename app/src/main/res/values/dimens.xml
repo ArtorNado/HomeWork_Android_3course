@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_calculate_button_margin_start">10dp</dimen>
+    <dimen name="default_calculate_button_margin_end">8dp</dimen>
+    <dimen name="default_calculate_button_margin_top">6dp</dimen>
+
+    <dimen name="default_calculate_button_height">88dp</dimen>
+    <dimen name="default_calculate_button_width">88dp</dimen>
+
+    <dimen name="default_calculate_button_inset_top">0dp</dimen>
+    <dimen name="default_calculate_button_inset_bottom">0dp</dimen>
+    <dimen name="default_calculate_button__text_size">28dp</dimen>
+
+    <dimen name="default_calculate_write_numbers_text_size">68sp</dimen>
+
+    <dimen name="default_margin_top">8dp</dimen>
+    <dimen name="default_margin_bottom">8dp</dimen>
+    <dimen name="default_margin_start">8dp</dimen>
+    <dimen name="default_margin_end">8dp</dimen>
+</resources>

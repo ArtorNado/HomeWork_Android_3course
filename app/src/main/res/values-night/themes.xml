@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Night" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="materialButtonStyle">@style/Widget.DarkCalculator.MaterialButtonStyle</item>
+        <item name="shapeAppearanceSmallComponent">@style/Widget.DarkCalculator.ShapeAppearance</item>
+        <item name="backgroundColor">@color/colorPrimary</item>
+        <item name="android:textViewStyle">@style/Widget.DarkCalculator.MaterialTextView</item>
+    </style>
+
+</resources>

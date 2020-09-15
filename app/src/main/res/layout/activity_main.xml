@@ -2,17 +2,249 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/host_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".presentation.MainActivity">
 
-    <TextView
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_dark_design"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="@string/dark_mode"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/displayModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/separate"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/red_300"
+        app:layout_constraintEnd_toEndOf="@id/displayModeSwitch"
+        app:layout_constraintStart_toStartOf="@id/tv_dark_design"
+        app:layout_constraintTop_toBottomOf="@id/displayModeSwitch" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_write_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="start"
+        android:gravity="end"
+        android:singleLine="true"
+        android:textSize="@dimen/default_calculate_write_numbers_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separate" />
+
+
+    <GridLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/default_margin_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear_all"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill_horizontal"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/clear_all"
+            android:textColor="@color/red_500" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear_last"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:textColor="@color/red_500"
+            app:drawableEndCompat="@drawable/ic_baseline_arrow_back_24"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_split"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:backgroundTint="@color/amber_500"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/sign_split" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_7"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_seven" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_8"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_eight" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_9"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_nine" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_multiply"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:backgroundTint="@color/amber_500"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/sign_multiply" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_4"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_four" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_5"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_five" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_6"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_six" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_minus"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:backgroundTint="@color/amber_500"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/sign_minus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_1"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_one" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_2"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_two" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_3"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_three" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_plus"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:backgroundTint="@color/amber_500"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/sign_plus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_0"
+            android:layout_height="@dimen/default_calculate_button_height"
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:layout_columnSpan="3"
+            android:layout_gravity="fill_horizontal"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/number_zero" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_equals"
+            android:layout_width="@dimen/default_calculate_button_height"
+            android:layout_height="@dimen/default_calculate_button_height"
+
+            android:layout_marginStart="@dimen/default_calculate_button_margin_start"
+            android:layout_marginTop="@dimen/default_calculate_button_margin_top"
+            android:backgroundTint="@color/green_a400"
+            android:insetTop="@dimen/default_calculate_button_inset_top"
+            android:insetBottom="@dimen/default_calculate_button_inset_bottom"
+            android:text="@string/sign_equals" />
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
