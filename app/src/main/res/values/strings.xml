@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">homeworks</string>
+    <string name="field_1">Поле 1</string>
+    <string name="field_2">Поле 2</string>
+    <string name="field_result">Результат</string>
+    <string name="calculate">Вычислить</string>
+
+    <string name="error_title">Ошибка</string>
+
+    <string name="alert_dialog_positive_button">Ок</string>
 </resources>
