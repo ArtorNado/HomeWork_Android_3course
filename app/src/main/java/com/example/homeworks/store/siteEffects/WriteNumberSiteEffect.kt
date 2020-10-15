@@ -1,6 +1,5 @@
 package com.example.homeworks.store.siteEffects
 
-import android.util.Log
 import com.example.homeworks.common.Constants
 import com.example.homeworks.common.exception.InsufficientDataException
 import com.example.homeworks.common.exception.LettersNotAllowedException
