@@ -1,7 +1,6 @@
 package com.example.homeworks.store.siteEffects
 
 import com.example.homeworks.common.Constants
-import com.example.homeworks.common.exception.InsufficientDataException
 import com.example.homeworks.common.exception.LettersNotAllowedException
 import com.example.homeworks.common.exception.UnexpectedException
 import com.example.homeworks.data.CalculatorApi
@@ -18,62 +17,51 @@ class WriteNumberSiteEffect(
     private val newsRelay: Relay<MainActivityNews>
 ) : MainActivitySideEffect {
 
-    private var lastValue: Pair<String, String>? = null
-    private var preLastValue: Pair<String, String>? = null
-
     override fun invoke(
         actions: Observable<MainActivityAction>,
         state: StateAccessor<MainActivityState>
     ): Observable<out MainActivityAction> {
         return actions.ofType<WriteValues>()
-            .switchMap { action ->
-                getResult(action.newValue)
-                    .map<MainActivityAction> {
-                        ComputationSuccess(
-                            Triple(
-                                it.first.toString(),
-                                it.second.toString(),
-                                it.third.toString()
-                            )
-                        )
-                    }
-                    .doOnError { throwable ->
-                        when (throwable) {
-                            LettersNotAllowedException -> newsRelay.accept(
-                                ShowComputationError(
-                                    throwable.message.toString()
+            .switchMap {
+                if (state.invoke().error == null && state.invoke().lastChangedFields != null
+                    && state.invoke().preLastChangedFields != null
+                ) {
+                    computation(
+                        state.invoke().lastChangedFields!!,
+                        state.invoke().preLastChangedFields!!
+                    )
+                        .map<MainActivityAction> {
+                            ComputationSuccess(
+                                Triple(
+                                    it.first.toString(),
+                                    it.second.toString(),
+                                    it.third.toString()
                                 )
                             )
                         }
-                    }
-                    .onErrorReturnItem(ErrorComputation)
-                    .toObservable()
-                    .startWith(StartComputation)
+                        .doOnError { throwable ->
+                            when (throwable) {
+                                LettersNotAllowedException -> newsRelay.accept(
+                                    ShowComputationError(
+                                        throwable.message.toString()
+                                    )
+                                )
+                            }
+                        }
+                        .onErrorReturnItem(ErrorComputation)
+                        .toObservable()
+                        .startWith(StartComputation)
+                } else {
+                    Single.just(ErrorComputation)
+                        .toObservable()
+                }
             }
     }
-
-    private fun getResult(newValue: Pair<String, String>): Single<Triple<Int, Int, Int>> {
-        return if (lastValue != null && lastValue?.first != newValue.first) {
-            val mLastValue = lastValue
-            preLastValue = lastValue
-            lastValue = newValue
-            computation(newValue, mLastValue!!)
-        } else if (preLastValue != null && lastValue?.first == newValue.first && preLastValue?.first != newValue.first) {
-            lastValue = newValue
-            computation(newValue, preLastValue!!)
-        } else {
-            lastValue = newValue
-            Single.error(InsufficientDataException)
-        }
-    }
-
 
     private fun computation(
         lastValue: Pair<String, String>,
         preLastValue: Pair<String, String>
     ): Single<Triple<Int, Int, Int>> {
-        this.lastValue = lastValue
-        this.preLastValue = preLastValue
         try {
             val lastNumber = Integer.parseInt(lastValue.second)
             val preLastNumber = Integer.parseInt(preLastValue.second)
