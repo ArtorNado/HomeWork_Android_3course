@@ -51,22 +51,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initClickListeners() {
+/*
         btn_0.setOnClickListener { viewModel.addNumber(getString(R.string.number_zero)) }
+*/
         btn_1.setOnClickListener { viewModel.addNumber(getString(R.string.number_one)) }
         btn_2.setOnClickListener { viewModel.addNumber(getString(R.string.number_two)) }
         btn_3.setOnClickListener { viewModel.addNumber(getString(R.string.number_three)) }
-        btn_4.setOnClickListener { viewModel.addNumber(getString(R.string.number_four)) }
+/*        btn_4.setOnClickListener { viewModel.addNumber(getString(R.string.number_four)) }
         btn_5.setOnClickListener { viewModel.addNumber(getString(R.string.number_five)) }
         btn_6.setOnClickListener { viewModel.addNumber(getString(R.string.number_six)) }
         btn_7.setOnClickListener { viewModel.addNumber(getString(R.string.number_seven)) }
         btn_8.setOnClickListener { viewModel.addNumber(getString(R.string.number_eight)) }
-        btn_9.setOnClickListener { viewModel.addNumber(getString(R.string.number_nine)) }
+        btn_9.setOnClickListener { viewModel.addNumber(getString(R.string.number_nine)) }*/
         btn_plus.setOnClickListener { viewModel.addOperator(getString(R.string.sign_plus)) }
-        btn_minus.setOnClickListener { viewModel.addOperator(getString(R.string.sign_minus)) }
+/*        btn_minus.setOnClickListener { viewModel.addOperator(getString(R.string.sign_minus)) }
         btn_split.setOnClickListener { viewModel.addOperator(getString(R.string.sign_split)) }
         btn_multiply.setOnClickListener { viewModel.addOperator(getString(R.string.sign_multiply)) }
         btn_clear_all.setOnClickListener { viewModel.clearAll() }
-        btn_clear_last.setOnClickListener { viewModel.cleatLast()}
+        btn_clear_last.setOnClickListener { viewModel.cleatLast()}*/
         btn_equals.setOnClickListener { viewModel.solveExpression() }
     }
 

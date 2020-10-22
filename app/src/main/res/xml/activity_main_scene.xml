@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/extented">
+
+        <Constraint android:id="@+id/dopTablelayout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/keyboard_layout"
+                app:layout_constraintTop_toBottomOf="@+id/theme_layout"
+                app:layout_constraintVertical_weight="0.4" />
+        </Constraint>
+
+        <Constraint android:id="@+id/keyboard_layout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dopTablelayout"
+                app:layout_constraintVertical_weight="1.7" />
+        </Constraint>
+
+        <Constraint android:id="@+id/theme_layout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/dopTablelayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:layout_constraintVertical_weight="0.9" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/def">
+
+        <Constraint android:id="@+id/dopTablelayout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/keyboard_layout"
+                app:layout_constraintTop_toBottomOf="@+id/theme_layout"
+                app:layout_constraintVertical_weight="0.06" />
+        </Constraint>
+
+        <Constraint android:id="@+id/keyboard_layout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dopTablelayout"
+                app:layout_constraintVertical_weight="2" />
+        </Constraint>
+
+        <Constraint android:id="@+id/theme_layout">
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/dopTablelayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:layout_constraintVertical_weight="1.2" />
+        </Constraint>
+
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/extented"
+        app:constraintSetStart="@id/def">
+
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:touchAnchorId="@id/dopTablelayout"
+            app:touchAnchorSide="bottom"
+            app:touchRegionId="@id/dopTablelayout" />
+    </Transition>
+</MotionScene>
