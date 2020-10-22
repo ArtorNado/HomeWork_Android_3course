@@ -71,9 +71,9 @@
         app:constraintSetStart="@id/def">
 
         <OnSwipe
-            app:dragDirection="dragDown"
+            app:dragDirection="dragUp"
             app:touchAnchorId="@id/dopTablelayout"
-            app:touchAnchorSide="bottom"
+            app:touchAnchorSide="top"
             app:touchRegionId="@id/dopTablelayout" />
     </Transition>
 </MotionScene>
